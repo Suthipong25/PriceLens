@@ -1,0 +1,25 @@
+{
+  "name": "pricelens",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PriceLens — Smart Shopping Intelligence & Price Comparison Platform for Thailand",
+  "packageManager": "pnpm@10.6.5",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "dev": "corepack pnpm --parallel -r run dev",
+    "build": "corepack pnpm -r run build",
+    "typecheck": "corepack pnpm -r run typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "corepack pnpm --filter @pricelens/database db:generate",
+    "db:migrate": "corepack pnpm --filter @pricelens/database db:migrate",
+    "db:seed": "corepack pnpm --filter @pricelens/database db:seed"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8"
+  }
+}

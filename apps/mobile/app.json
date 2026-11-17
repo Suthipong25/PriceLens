@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "PriceLens Thailand",
+    "slug": "pricelens-thailand",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "pricelens",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "th.co.pricelens.app"
+    },
+    "android": {
+      "package": "th.co.pricelens.app"
+    }
+  }
+}
