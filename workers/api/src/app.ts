@@ -93,6 +93,9 @@ export function createApiApp(options: CreateApiAppOptions) {
     const requestId = `req_${crypto.randomUUID().slice(0, 12)}`;
     c.set("requestId", requestId);
     c.header("X-Request-Id", requestId);
+    c.header("X-Content-Type-Options", "nosniff");
+    c.header("X-Frame-Options", "DENY");
+    c.header("Referrer-Policy", "strict-origin-when-cross-origin");
 
     const ip =
       c.req.header("cf-connecting-ip") ??
@@ -1948,6 +1951,19 @@ export function createApiApp(options: CreateApiAppOptions) {
         offersWithUnknownShippingCount,
         pendingMatchCandidatesCount: pendingCandidates.length,
       },
+      meta: { timestamp: new Date().toISOString() },
+    });
+  });
+
+  app.get("/api/v1/admin/audit-logs", async (c) => {
+    const logs = await db
+      .select()
+      .from(auditLogs)
+      .orderBy(desc(auditLogs.createdAt))
+      .limit(50);
+
+    return c.json({
+      data: logs,
       meta: { timestamp: new Date().toISOString() },
     });
   });
